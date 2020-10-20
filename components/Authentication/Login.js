@@ -4,8 +4,7 @@ import {
   Text,
   View,
   TextInput,
-  ActivityIndicator,
-  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 import firebase from 'firebase';
 import MainNavigation from '../Navigation/Main';

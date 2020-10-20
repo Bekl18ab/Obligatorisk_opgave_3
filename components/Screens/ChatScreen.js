@@ -2,8 +2,11 @@ import React, { useEffect } from 'react';
 import { GiftedChat } from 'react-native-gifted-chat';
 import firebase from "firebase"
 import {useState} from 'react';
+import {Keyboard,  TouchableWithoutFeedback, View} from 'react-native';
+import { TextInput } from 'react-native-paper';
 
 const ChatScreen = () => {
+
     //Jeg initialisere et array med useState. "messages" er vores read værdi og "setMessages" er vores write værdi
     const [messages, setMessages] = useState([]);
     
@@ -46,7 +49,7 @@ const ChatScreen = () => {
             onSend={saveToFirebase}
             showUserAvatar
             scrollToBottom
-        />
+            />
     );
 }
 

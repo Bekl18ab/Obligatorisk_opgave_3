@@ -5,7 +5,7 @@ import Constants from 'expo-constants';
 
 export const globaleStyles = StyleSheet.create({
     styleHome: {
-        fontFamily: "verdana",
+        fontFamily: "Helvetica",
         fontSize: 50,
         fontWeight: "bold",
     },

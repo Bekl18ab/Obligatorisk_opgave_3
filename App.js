@@ -3,6 +3,7 @@ import firebase from "./firebase";
 import MainNavigation from './components/Navigation/Main';
 
 const App = () => {
+
   const [ isLoggedIn, setIsLoggedIn ] = useState(false);
 
   useEffect(() => {
@@ -11,7 +12,7 @@ const App = () => {
     });
     
   }, [])
-  
+
   return (
     <MainNavigation auth={isLoggedIn} />
   )
