@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, SafeAreaView } from 'react-native';
+import { Text, View, StyleSheet, Button, SafeAreaView, Platform } from 'react-native';
 import Constants from 'expo-constants';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
@@ -134,27 +134,32 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
+  ...Platform.select({
+    ios:{
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      paddingTop: Constants.statusBarHeight,
+      backgroundColor: '#ecf0f1',
+      padding: 8,
+    },
+    map: { flex: 1 },
+    infoBox: {
+      height: 100,
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: 'yellow',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+    },
+    infoText: {
+      fontSize: 20,
+    },
   },
-  map: { flex: 1 },
-  infoBox: {
-    height: 100,
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'yellow',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  infoText: {
-    fontSize: 20,
-  },
+web:{}})
+  
 });
  

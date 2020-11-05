@@ -4,16 +4,17 @@ import {
   Text,
   View,
   TextInput,
-  ActivityIndicator,
-  StyleSheet,
+  ActivityIndicator
 } from 'react-native';
 import firebase from 'firebase';
 import { globaleStyles } from '../Styles';
+import {getThisUser} from '../../helpers/account';
 
 export default class SignUpForm extends React.Component {
   state = {
     email: '',
     password: '',
+    accountName: '',
     isLoading: false,
     isCompleted: false,
     errorMessage: null,
@@ -26,10 +27,12 @@ export default class SignUpForm extends React.Component {
   setError = errorMessage => this.setState({ errorMessage });
   clearError = () => this.setState({ errorMessage: null });
   handleChangeEmail = email => this.setState({ email });
+  handleChangeAccountName = accountName => this.setState({accountName});
   handleChangePassword = password => this.setState({ password });
 
   handleSubmit = async () => {
-    const { email, password } = this.state;
+    const { email, password, accountName } = this.state;
+
     try {
       this.startLoading();
       this.clearError();
@@ -37,13 +40,12 @@ export default class SignUpForm extends React.Component {
       // Here the data is passed to the service and we wait for the result
       //await dummySignUp(email, password);
 
-      //connecting with firebase
-      const result = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password);
-
-      // For at kunne lave en ny database med users, så skal denne kaldes ligeledes med hvordan vi gjorde med messages
-      // firebase.database().ref('users/'+message[0]._id).set(message[0]);   
+      //connecting with firebase and saving accounts with the created user id from firebase
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+        firebase.database().ref('accounts/'+getThisUser()).set({
+          accountName: accountName
+        });   
+      });
 
       this.endLoading();
       this.setState({ isCompleted: true });
@@ -54,12 +56,20 @@ export default class SignUpForm extends React.Component {
   };
 
   render = () => {
-    const { errorMessage, email, password, isCompleted } = this.state;
+    const { errorMessage, email, password, isCompleted, accountName } = this.state;
     if (isCompleted) {
       return <Text>You are now signed up</Text>;
     }
+
+
     return (
       <View style={{marginTop: 140}}>
+        <TextInput
+          placeholder="account name"
+          value={accountName}
+          onChangeText={this.handleChangeAccountName}
+          style={globaleStyles.inputField}
+        />
         <TextInput
           placeholder="email"
           value={email}
@@ -80,6 +90,7 @@ export default class SignUpForm extends React.Component {
       </View>
     );
   };
+
 
   renderButton = () => {
     const { isLoading } = this.state;

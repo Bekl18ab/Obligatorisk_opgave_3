@@ -2,12 +2,12 @@ import React from "react"
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../Screens/HomeScreen';
-import SettingsScreen from "../Screens/SettingsScreen";
-import UserListNavigation from "./UserList"
 import Auth from "../Authentication/Auth";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import {MaterialIcons, Ionicons} from "react-native-vector-icons";
 import ChatScreen from "../Screens/ChatScreen";
+import SettingsScreen from "../Screens/SettingsScreen";
+import ParkingSpots from '../Screens/ParkingSpots';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,11 +27,11 @@ const MainTabs = () => (
             )}}
         />
         <Tab.Screen
-        name="Friends"
-        component={UserListNavigation}
+        name="Parking"
+        component={ParkingSpots}
         options={{
             tabBarIcon: ({color}) =>(
-            <Icon name="user-friends" size={30} color={color} />
+            <Icon name="parking" size={30} color={color} />
             )}}
         />
         <Tab.Screen

@@ -15,6 +15,9 @@ export const globaleStyles = StyleSheet.create({
         alignItems: 'center',
         padding: 20
     },
+    signOut: {
+        padding: 10
+    },
     homeText: {
         marginBottom: 300,
         padding: 80,
@@ -24,7 +27,7 @@ export const globaleStyles = StyleSheet.create({
 
     // Not working on Settings Screen - hence I've created it locally
     inlineScroll: {
-        height: 100
+        height: 200
     },
     container: {
         flex: 1,
