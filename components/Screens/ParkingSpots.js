@@ -17,6 +17,22 @@ const Parkingspot = () => {
         {
             "name": "Frederiksberg Allé 39",
             "photo": "https://s.respace.dk/dyn/resources/Property_Model_Property_Image/image/5/1212785/1504518576/grid/59ad21b0678522.jpg"
+        },
+        {
+            "name": "Københavnsvej 32",
+            "photo": "https://s.respace.dk/dyn/resources/Property_Model_Property_Image/image/3/2514483/1601476381/grid/5f74971a9919ainkedimg-2393li.jpg"
+        },
+        {
+            "name": "Hoveltevej 36",
+            "photo": "https://www.fc-beton.dk/images/1707/mindre_parkeringsplads_gr%C3%A6sarmering.jpg"
+        },
+        {
+            "name": "Jagtvej 69",
+            "photo": "https://i.ebayimg.com/images/g/ysYAAOSwWElfEfgV/s-l960.jpg"
+        },
+        {
+            "name": "Fredeskovhellet 212",
+            "photo": "https://i.pinimg.com/236x/ae/70/99/ae70990a904647e9c84a15940ae2e200.jpg"
         }
     ]
     
